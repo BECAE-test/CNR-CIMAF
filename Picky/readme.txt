@@ -46,14 +46,14 @@ Once Picky has been downloaded, follow these steps:
 ## Step 3: Compile the Code
 
 3.1 	If the script is not executable, make it executable with the following command:
-		chmod a+x Compile-Picky-py
+		chmod a+x Compile-Picky-py.sh
 
 3.2 	Run the compilation script with the command:
-		./Compile-Picky-py
+		./Compile-Picky-py.sh
 
 3.3 	During the compilation process, the terminal will display error messages if something goes wrong. Otherwise, a success message will be shown.
 
-3.4 	If the compilation is successful, an executable file named "Picky" will be generated inside the root directory.
+3.4 	If the compilation is successful, an executable file named "Picky" will be generated inside the work directory.
 
 ## Step 4: Run the Executable. *PLEASE NOTE that the executable code must be placed (or copied) where you want to perform the calculation even if the necessary folders do not exist*
 
