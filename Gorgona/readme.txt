@@ -45,10 +45,10 @@ All the following commands must be executed in a Bash terminal.
 
 #### Step 4: Run "GOrGONAzero_due"
 
-3.1 Run the "GORGONAzero_due" code by executing:
+4.1 Run the "GORGONAzero_due" code by executing:
 	./GORGONAzero_due
 	
-4.2 A window will appear asking you to select a pair of metals from a dropdown menu. The available pairs are listed in the "databse_ff" folder.
+4.2 A window will appear asking you to select a pair of metals from a dropdown menu. The available pairs are listed in the "databse_ff" folder. (For this example you can choose AuCu)
 
 4.3 In the same window, you will also need to specify the following parameters:
 
@@ -76,17 +76,17 @@ All the following commands must be executed in a Bash terminal.
 
 5.2 If you choose to continue, another window will appear requiring the following inputs:
 
-- Size Start
-- Size End
-- Pruning
-- NBH
+- Size Start 2
+- Size End 2
+- Pruning 2
+- NBH 2
 
 5.3 Recommended values for a quick test run are:
 
-- Size Start: 0  
-- Size End: 50  
-- Pruning: 25  
-- NBH: 500  
+- Size Start 2: 0  
+- Size End 2: 50  
+- Pruning 2: 25  
+- NBH 2: 500  
 
 5.5 Once the Biased Analysis is completed, a message will be displayed in the terminal confirming the process is finished.
 
@@ -97,12 +97,12 @@ All the following commands must be executed in a Bash terminal.
 
 6.2 A window will open, asking for the following inputs:
 
-- Size Start (e.g., 0)
-- Size End (e.g., 50)
-- Pruning (e.g., 25)
-- Folder containing the "motifs" directory (e.g., GOrGONA-main)
+- Size Start (0)
+- Size End (50)
+- Pruning (25)
+- Folder containing the "motifs" directory (in this case "GOrGONA-main")
 
-6.3 After entering these details, click Save to proceed.
+6.3 After entering these details, click Start to proceed.
 
 #### Step 7: Visualizing and Analyzing the Graphs
 
