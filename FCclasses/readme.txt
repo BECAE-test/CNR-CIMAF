@@ -12,20 +12,20 @@ All the following commands must be executed in a Bash terminal.
 1.1 Open a terminal and navigate to the directory where "pre-install-FCclasses.sh" is located.
 
 1.2 If the script is not executable, make it executable by running the command:
-	chmod a+x pre-install-FCclasses
+	chmod a+x pre-install-FCclasses.sh
 
 1.3 Run the command:
-	./pre-install-FCclasses
+	./pre-install-FCclasses.sh
 	
 1.4 The terminal will display messages indicating whether the download and installation were successful.
 
 #### Step 2: Compile the Code
 	
 2.1 If the script is not executable, make it executable by running the command:
-	chmod a+x compile-FCclasses
+	chmod a+x compile-FCclasses.sh
 	
 2.2 Run the compilation script with the command:
-	./compile-FCclasses
+	./compile-FCclasses.sh
 	
 2.3 During the compilation process, the terminal will display error messages if something goes wrong. Otherwise, a success message will be shown.
 
