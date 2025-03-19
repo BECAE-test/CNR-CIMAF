@@ -37,9 +37,11 @@ Once Joyce has been downloaded, follow these steps:
 2.3 	Run the following command:
 		./Install-Joyce
 
-2.4 	The terminal will display messages indicating that the necessary files have been successfully downloaded and installed.
+2.4	A GUI will ask to user to select code folder, please select folder extracted at step 0.
 
-2.5	Please restart bash terminal.
+2.5 	The terminal will display messages indicating that the necessary files have been successfully downloaded and installed.
+
+2.6	Please restart bash terminal.
 
 ## Step 3: Compile the Code
 
