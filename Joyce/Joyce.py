@@ -230,7 +230,7 @@ def edit_inp_file(file_path):
 
     # GUI Creation
     root = tk.Tk()
-    root.title(f"Editor - {file_path}")
+    root.title(f"Editing of {file_path}")
     root.protocol("WM_DELETE_WINDOW", on_close)  # Handles window closing
 
     # Get screen dimensions
@@ -846,9 +846,9 @@ def keep_selected_lines(file_path, output_path, start, end):
 
     # Create the Tkinter window
     root = tk.Tk()
-    root.title("Select the lines to keep")
+    root.title("Select the lines of to keep")
 
-    label = tk.Label(root, text="Select the lines to keep:")
+    label = tk.Label(root, text="Dihedrals inside Generated.IC.txt:")
     label.pack()
 
     listbox = tk.Listbox(root, selectmode=tk.MULTIPLE, height=20, width=80)
