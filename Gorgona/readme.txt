@@ -6,7 +6,7 @@ All the following commands must be executed in a Bash terminal.
 #### Step 0: Extract "GOrGONA-main"
 
 0.1 Extract "GOrGONA-main" by running the command:
-	tar -xzf GOrGONA23.tar
+	tar -xf GOrGONA.tar
 	
 	
 #### Step 1: Run the Pre-Installation Script (Only Required the First Time)
@@ -22,10 +22,10 @@ WARNING: The commands used in this pre-installation script are tailored for Ubun
 	./pre-install-Gorgona.sh
 
 
-#### Step 2: Run "GOrGONAzero_due"
+#### Step 2: Run "GORGONApre"
 
-2.1 In the same folder, run the "GORGONAzero_due" code by executing:
-	python3 GORGONAzero_due.py
+2.1 In the same folder, run the "GORGONApre" code by executing:
+	python3 GORGONApre.py
 	
 2.2 A window will appear asking you to enter the name of the operating folder that will be created and where the script will be run. To continue, click OK.
 	
@@ -88,12 +88,12 @@ NOTE: Following command must be run from inside the folder that was created in S
 4bis.2 A window will appear asking whether you want to run only the Unbiased Search or both the Biased and Unbiased Search. When you choose an option the analysis will be run.
 
 
-#### Step 5: Run graficoGORG for Post-Processing
+#### Step 5: Run GORGONApost for Post-Processing
 
 NOTE: Step 5 and 6 make sense only if also Biased Search is performed
 
-5.1 Run the graficoGORG tool by executing:
-	python3 graficoGORG.py
+5.1 Run the GORGONApost tool by executing:
+	python3 GORGONApost.py
 
 5.2 A window will open, asking for the following inputs:
 
