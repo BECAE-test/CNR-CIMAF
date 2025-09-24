@@ -1,3 +1,12 @@
+### For a more detailed description of the code, please refer to the source code page at "https://github.com/giobarc/GOrGONA"
+
+
+### WARNING: The commands used for the pre-installation script (Step 1) are tailored for Ubuntu-based systems. If you are using a different Linux distribution or another operating system, you may need to adapt them accordingly.
+
+
+### WARNING: It is recommended to run step 4bis on the same computer where all the previous steps were executed. If you intend to switch to a different computer, make sure that all required libraries and dependencies are properly installed and compatible.
+
+
 ### Step-by-Step Guide to Compile and Run Gorgona
 
 All the following commands must be executed in a Bash terminal.
@@ -6,12 +15,10 @@ All the following commands must be executed in a Bash terminal.
 #### Step 0: Extract "GOrGONA-main"
 
 0.1 Extract "GOrGONA-main" by running the command:
-	tar -xf GOrGONA.tar
+	tar -xzf GOrGONA23.tar
 	
 	
 #### Step 1: Run the Pre-Installation Script (Only Required the First Time)
-
-WARNING: The commands used in this pre-installation script are tailored for Ubuntu-based systems. If you are using a different Linux distribution or another operating system, you may need to adapt them accordingly.
 
 1.1 Open a terminal and navigate into the extracted directory "GOrGONA-main" where "pre-install-Gorgona.sh" is located.
 
@@ -22,10 +29,10 @@ WARNING: The commands used in this pre-installation script are tailored for Ubun
 	./pre-install-Gorgona.sh
 
 
-#### Step 2: Run "GORGONApre"
+#### Step 2: Run "GOrGONAzero_due"
 
-2.1 In the same folder, run the "GORGONApre" code by executing:
-	python3 GORGONApre.py
+2.1 In the same folder, run the "GORGONAzero_due" code by executing:
+	python3 GORGONAzero_due.py
 	
 2.2 A window will appear asking you to enter the name of the operating folder that will be created and where the script will be run. To continue, click OK.
 	
@@ -78,8 +85,6 @@ WARNING: The commands used in this pre-installation script are tailored for Ubun
 
 #### Step 4bis: Run Unbiased and Biased Search
 
-WARNING: It is recommended to run this step on the same computer where all the previous steps were executed. If you intend to switch to a different computer, make sure that all required libraries and dependencies are properly installed and compatible.
-
 NOTE: Following command must be run from inside the folder that was created in Step 2.2
 
 4bis.1 If the parameters for the Unbiased and Biased Search have already been set but the script has not been run yet, you can start the analysis by executing the command:
@@ -88,12 +93,12 @@ NOTE: Following command must be run from inside the folder that was created in S
 4bis.2 A window will appear asking whether you want to run only the Unbiased Search or both the Biased and Unbiased Search. When you choose an option the analysis will be run.
 
 
-#### Step 5: Run GORGONApost for Post-Processing
+#### Step 5: Run graficoGORG for Post-Processing
 
 NOTE: Step 5 and 6 make sense only if also Biased Search is performed
 
-5.1 Run the GORGONApost tool by executing:
-	python3 GORGONApost.py
+5.1 Run the graficoGORG tool by executing:
+	python3 graficoGORG.py
 
 5.2 A window will open, asking for the following inputs:
 
