@@ -79,7 +79,7 @@ STATE1_FILE  =   state1.fcc
 STATE2_FILE  =   state2.fcc
 ELDIP_FILE   =   eldip
 """
-#  Dizionario che mappa il tipo ai relativi valori
+
 CATEGORY_VALUES_MAP = {
     "PROPERTY": ["OPA", "EMI", "ECD", "CPL", "MCD", "TPA", "TPCD", "RR", "IC", "NRSC", "NR0", "VIB"],
     "BROADFUN": ["GAU", "LOR", "VOI"],
@@ -174,40 +174,27 @@ def show_output(result, window_title):
     if not window_title:
         window_title = "Command Output"
 
-    # Crea una nuova finestra
     output_window = tk.Toplevel()
     output_window.title(window_title)
     output_window.geometry("600x400")
 
-    # Aggiungi una Textbox scrollabile
     text_area = scrolledtext.ScrolledText(output_window, wrap=tk.WORD, width=70, height=20)
     text_area.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
 
-    # Inserisci l'output
     text_area.insert(tk.END, result.stdout if result and hasattr(result, 'stdout') else "No output available.")
 
-    # Rendi la textbox sola lettura
     text_area.config(state=tk.DISABLED)
 
-    # Bottone di chiusura
     close_btn = tk.Button(output_window, text="Close", command=output_window.destroy)
     close_btn.pack(pady=5)
-
 
 def edit_inp_file(file_path):
     """Opens a text file given a path and displays it in a GUI with a combobox for word selection.
     A collapsible help banner is shown at the top to guide the user.
     """
     # --- IMPORT ASSUMPTIONS ---
-    # Richiede: import os, re, tkinter as tk, from tkinter import ttk, filedialog, messagebox, scrolledtext
     clicked_index = None
 
-    # -----------------------------
-    # HELP BANNER (top)
-    # -----------------------------
-
-    # -----------------------------
-    # (Tutto il resto del tuo codice originale)
     # -----------------------------
     def select_file():
         file_sel = filedialog.askopenfilename(
@@ -272,7 +259,7 @@ def edit_inp_file(file_path):
         selected_lines = []
         built_lines = []
         selected_output_index = [None]
-        file_top_path = filedialog.askopenfilename(title="Select topology file")
+        file_top_path = filedialog.askopenfilename(title="Select Internal coordinates file")
 
         def get_next_label():
             nonlocal label_index
@@ -399,7 +386,7 @@ def edit_inp_file(file_path):
             except Exception:
                 tk.Label(right_frame, text="Image not available").pack(pady=(0, 20))
         else:
-            tk.Label(right_frame, text="Image not found").pack(pady=(0, 20))
+            tk.Label(right_frame, text="Image 'table_IC.png'not found").pack(pady=(0, 20))
 
         generate_button = tk.Button(right_frame, text="Generate", command=generate_line, state=tk.DISABLED)
         generate_button.pack(pady=5, fill=tk.X)
@@ -451,10 +438,6 @@ def edit_inp_file(file_path):
                 first_word = line.split()[0]
                 words.append(first_word)
         return words
-
-    def on_close():
-        root.quit()
-        root.destroy()
 
     def refresh_word_combobox2():
         nonlocal first_words
@@ -637,7 +620,6 @@ def edit_inp_file(file_path):
         context = extract_keywords_from_text(content)
         return [kw for kw in DEFAULT_KEYWORDS if kw not in first_words and is_compatible(kw, context)]
 
-    # ------------- caricamento iniziale contenuto (come nel tuo codice) -------------
     loaded_file_path = None
 
     def _pick_inp_from_list(inp_files):
@@ -678,11 +660,10 @@ def edit_inp_file(file_path):
         win.wait_window()
         return choice["value"]
 
-    help_win = {"ref": None}  # per riusare la stessa finestra
+    help_win = {"ref": None}  
 
     def open_help_window():
         """Apre (o porta avanti) una finestra di aiuto separata."""
-        # se esiste già, mettila avanti
         if help_win["ref"] is not None and help_win["ref"].winfo_exists():
             help_win["ref"].deiconify()
             help_win["ref"].lift()
@@ -692,10 +673,9 @@ def edit_inp_file(file_path):
         hw = tk.Toplevel()
         help_win["ref"] = hw
         hw.title("Guida rapida all’editor .inp")
-        hw.geometry("780x520")  # regola se vuoi
+        hw.geometry("780x520")  
         hw.minsize(560, 360)
 
-        # chiudi: azzera il riferimento
         def _on_close():
             try:
                 hw.destroy()
@@ -703,7 +683,6 @@ def edit_inp_file(file_path):
                 help_win["ref"] = None
         hw.protocol("WM_DELETE_WINDOW", _on_close)
 
-        # contenitore
         outer = tk.Frame(hw, padx=14, pady=14)
         outer.pack(fill=tk.BOTH, expand=True)
 
@@ -713,11 +692,9 @@ def edit_inp_file(file_path):
         )
         title.pack(anchor="w", pady=(0, 8))
 
-        # area scorrevole per il testo di aiuto
         st = scrolledtext.ScrolledText(outer, wrap=tk.WORD, font=("Arial", 10))
         st.pack(fill=tk.BOTH, expand=True)
 
-        # testo help (modifica liberamente)
         st.insert(tk.END, (
             "• LEFT Panel (K-word in text): select a keyword already present and replace its value "
             "with one from the list or by typing it in manually. Use “Select file” when the keyword "
@@ -736,13 +713,12 @@ def edit_inp_file(file_path):
             "a new path.\n\n"
             "Shortcuts: press F1 to open this help window."
         ))
-        st.config(state="disabled")  # sola lettura
+        st.config(state="disabled")  
 
-        # pulsante chiudi
+        
         btn_row = tk.Frame(outer)
         btn_row.pack(fill=tk.X, pady=(10, 0))
         tk.Button(btn_row, text="Chiudi", command=_on_close).pack(side=tk.RIGHT)
-
 
     try:
         inp_in_dir = sorted([f for f in os.listdir(os.getcwd()) if f.lower().endswith(".inp")])
@@ -830,12 +806,9 @@ def edit_inp_file(file_path):
     tk.Label(topbar, text="Editor .inp", font=("Arial", 11, "bold")).grid(row=0, column=0, sticky="w")
     tk.Button(topbar, text="?", width=3, command=open_help_window).grid(row=0, column=1, sticky="e")
 
-    # bind F1 alla stessa finestra di aiuto
     root.bind("<F1>", lambda e: open_help_window())
 
-
-
-    # main frame (come prima)
+    # main frame
     frame = tk.Frame(root)
     frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 
@@ -930,9 +903,6 @@ def edit_inp_file(file_path):
     close_button.grid(row=100, column=0, pady=10, sticky="ew")
 
     # bindings
-    def extract_keywords_from_text_wrapper(text):
-        return extract_keywords_from_text(text)
-
     text_area.bind("<KeyRelease>", lambda event: refresh_word_combobox2())
     text_area.bind("<Button-1>", on_text_click)
     KW_in_text.bind("<<ComboboxSelected>>", update_value_combobox)
@@ -943,71 +913,9 @@ def edit_inp_file(file_path):
 
     root.mainloop()
 
-
-def FCclasses_install():
-    """ Esegue i comandi di installazione all'interno della cartella selezionata. """
-    
-    def FCclasses_test():
-        """ Crea una finestra con una domanda e due pulsanti (Yes e No). """
-        ans = messagebox.askyesno(title="Test FCclasses", message="Do you want to test FCclasses?")
-        if ans == True:
-            try:
-                result = subprocess.run(["make", "test"], cwd=folder_path, capture_output=True, text=True, check=True)
-                print("Comando eseguito con successo!")
-                print(result.stdout)  # Stampa l'output del comando
-
-            except subprocess.CalledProcessError as e:
-                print(f"Errore durante l'esecuzione: {e}")
-                print(f"Output dell'errore: {e.stderr}")  # Mostra l'output dell'errore
-
-            except Exception as e:
-                print(f"Errore imprevisto: {e}")
-        else:
-            messagebox.showinfo(title="Info", message="FCclasses won't be tested")
-
-    comandi = [["./configure"], ["make"]]
-    risultati = {}
-    folder_path = filedialog.askdirectory(title="Select FCclasses folder")
-
-    if folder_path:
-        messagebox.showinfo("Folder selected", f"Selected folder is:\n{folder_path}")    
-    else:
-        messagebox.showwarning("No folder selected", "The installation has been aborted.")
-        
-    for comando in comandi:
-        try:
-            process = subprocess.Popen(comando, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=folder_path)
-            stdout, stderr = process.communicate()  # Attende la fine del comando
-            risultati[" ".join(comando)] = {"stdout": stdout.strip(),"stderr": stderr.strip(),"returncode": process.returncode}
-            
-            if process.returncode != 0:
-                print(f"Errore nell'esecuzione di: {' '.join(comando)}")
-                print(stderr.strip())
-
-        except Exception as e:
-            risultati[" ".join(comando)] = {"stdout": "","stderr": str(e),"returncode": -1}
-            print(f"Errore generale: {str(e)}")
-
-    try:
-        result = subprocess.run(["sudo", "make", "install"], cwd=folder_path, capture_output=True, text=True, check=True)
-        print("Comando eseguito con successo!")
-        print(result.stdout)  # Stampa l'output del comando (facoltativo)
-
-    except subprocess.CalledProcessError as e:
-        print(f"Errore durante l'esecuzione: {e}")
-        print(f"Output dell'errore: {e.stderr}")  # Mostra l'output dell'errore
-
-    except Exception as e:
-        print(f"Errore imprevisto: {e}")
-
-    messagebox.showinfo("Installation completed", "The program has been installed successfully!")
-    
-    FCclasses_test()
-    return 
-
 def select_files():
     root = tk.Tk()
-    root.withdraw()  # Hide the main window
+    root.withdraw()  
     
     file_paths = {}
     
@@ -1041,7 +949,6 @@ def execute_gen_commands(command, folder):
 def execute_fcclasses3_inpTemplate():
     try:
         result = subprocess.run(["fcclasses3", "-h"], capture_output=True, text=True, check=True)
-        # print(result.stdout)
         with open("fcc.inp", "w") as file:
             file.write(result.stdout)
     except FileNotFoundError:
@@ -1237,7 +1144,7 @@ def run_fcclasses():
                 with open("fcc.out", "r") as f:
                     output = f.read()
 
-                # Mostra il contenuto in una finestra popup
+                
                 output_window = tk.Toplevel()
                 output_window.title("Output - fcc.out")
                 output_window.geometry("600x400")
